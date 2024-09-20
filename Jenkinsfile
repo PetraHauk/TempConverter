@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven_3.9.9'
+        maven 'Maven 3.9.9'  // Use the correct name with a space
     }
     stages {
         stage('Checkout') {
