@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.9.9'  // Use the correct name with a space
+        maven 'Maven 3.9.9'  // Ensure the correct Maven version
     }
     stages {
         stage('Checkout') {
@@ -24,10 +24,16 @@ pipeline {
                 bat 'mvn verify'
             }
         }
+        stage('JaCoCo Report') {
+            steps {
+                jacoco execPattern: '**/target/jacoco.exec'
+            }
+        }
     }
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
+            jacoco execPattern: '**/target/jacoco.exec'
         }
     }
 }
