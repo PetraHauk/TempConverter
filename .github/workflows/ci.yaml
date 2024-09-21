@@ -19,7 +19,13 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '21'
+          java-version: '17'
 
-      - name: Build with Maven
+      - name: Build and Test with Maven
         run: mvn clean verify
+
+      - name: Upload JaCoCo Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: target/site/jacoco
