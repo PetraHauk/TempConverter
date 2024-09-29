@@ -31,4 +31,11 @@ public class TempatureConverterTest {
     public void testKelvinToCel() {
         assertEquals(0.0, converter.kelvinToCel(273.15), 0.001);
     }
+
+    @Test
+    public void testKelvinToFah() {
+        assertEquals(32.0, converter.kelvinToFah(273.15), 0.001);
+        assertEquals(-241.0, converter.kelvinToFah(0), 0.001);
+        assertEquals(132.0, converter.kelvinToFah(373.15), 0.001);
+    }
 }
